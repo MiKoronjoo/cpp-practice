@@ -22,4 +22,20 @@ public:
     void sort() {
         std::sort(list.begin(), list.end(), shapeCompare);
     }
+    Shape* find(double area) {
+        for(auto shape = list.begin(); shape != list.end(); shape++) {
+            if((*shape)->getArea() == area)
+                return (Shape*) *shape;
+        }
+        return nullptr;
+    }
+    void remove(double area) {
+        for(auto shape = list.begin(); shape != list.end(); shape++) {
+            if((*shape)->getArea() == area) {
+                list.erase(shape);
+                return;
+            }
+        }
+    }
+
 };
