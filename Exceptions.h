@@ -1,0 +1,8 @@
+//
+// Created by hassan on 11/11/18.
+//
+
+#ifndef CPP_PRACTICE_EXCEPTIONS_H
+#define CPP_PRACTICE_EXCEPTIONS_H
+
+#endif //CPP_PRACTICE_EXCEPTIONS_H
