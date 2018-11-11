@@ -7,6 +7,7 @@
 #include "Ellipse.h"
 #include "Circle.h"
 #include "Triangle.h"
+#include "Exceptions.h"
 
 bool shapeCompare(Shape* lh_shape, Shape* rh_shape) {
     return *lh_shape > *rh_shape;
@@ -27,7 +28,8 @@ public:
             if((*shape)->getArea() == area)
                 return (Shape*) *shape;
         }
-        return nullptr;
+        ShapeNotFoundException ex;
+        throw ex;
     }
     void remove(double area) {
         for(auto shape = list.begin(); shape != list.end(); shape++) {
@@ -36,6 +38,8 @@ public:
                 return;
             }
         }
+        ShapeNotFoundException ex;
+        throw ex;
     }
 
 };

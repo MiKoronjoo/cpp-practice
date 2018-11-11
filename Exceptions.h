@@ -10,3 +10,12 @@ public:
         return message.c_str();
     }
 };
+
+class ShapeNotFoundException: std::exception {
+private:
+    const std::string message = "Error: shape with this area not found";
+public:
+    const char* what() const throw() {
+        return message.c_str();
+    }
+};
