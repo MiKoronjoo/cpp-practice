@@ -1,20 +1,28 @@
 #include <iostream>
 #define PI 3.14159
+#define _(r, g, b) new RGB(r, g, b)
 using namespace std;
+
+struct RGB {
+    int r, g, b;
+    RGB(int r, int g, int b){
+        this->r = r;
+        this->g = g;
+        this->b = b;
+    }
+};
 
 class Shape {
 protected:
-    double area;
-    Shape() {}
+    RGB* color;
 public:
-    Shape(double area) {
-        this->area = area;
-    }
+    Shape(): color(_(255, 255, 255)) {} // By default, the color is black
     virtual void draw() {
         cout << "Draw a shape!" << endl;
     }
-    virtual double getArea() {
-        return area;
+    virtual double getArea() = 0;
+    void setColor(int r, int g, int b) {
+        color = _(r, g, b);
     }
 };
 
@@ -24,10 +32,7 @@ protected:
     double width;
     Rectangle() {}
 public:
-    Rectangle(double length, double width) {
-        this->length = length;
-        this->width = width;
-    }
+    Rectangle(double length, double width): length(length), width(width) {}
     void draw() {
         cout << "Draw a rectangle!" << endl;
     }
@@ -39,34 +44,31 @@ public:
 class Square: public Rectangle {
 public:
     Square(double side) {
-        this->length = side;
-        this->width = side;
+        length = side;
+        width = side;
     }
 };
 
 class Ellipse: public Shape {
 protected:
-    double major;
-    double minor;
+    double major_radius;
+    double minor_radius;
     Ellipse() {}
 public:
-    Ellipse(double major, double minor) {
-        this->major = major;
-        this->minor = minor;
-    }
+    Ellipse(double major, double minor): major_radius(major), minor_radius(minor) {}
     void draw() {
         cout << "Draw an ellipse!" << endl;
     }
     double getArea() {
-        return major * minor * PI;
+        return major_radius * minor_radius * PI;
     }
 };
 
 class Circle: public Ellipse {
 public:
     Circle(double radius) {
-        this->major = radius;
-        this->minor = radius;
+        major_radius = radius;
+        minor_radius = radius;
     }
 };
 
@@ -75,10 +77,7 @@ protected:
     double base;
     double height;
 public:
-    Triangle(double base, double height) {
-        this->base = base;
-        this->height = height;
-    }
+    Triangle(double base, double height): base(base), height(height) {}
     void draw() {
         cout << "Draw a triangle!" << endl;
     }
