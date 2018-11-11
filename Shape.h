@@ -9,4 +9,6 @@ public:
     virtual void draw();
     virtual double getArea() = 0;
     void setColor(int r, int g, int b);
+    bool operator >(Shape& that);
+    bool operator <(Shape& that);
 };

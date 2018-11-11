@@ -16,3 +16,11 @@ void Shape::setColor(int r, int g, int b) {
     }
     color = _(r, g, b);
 }
+
+bool Shape::operator >(Shape& that) {
+    return getArea() > that.getArea();
+}
+
+bool Shape::operator <(Shape& that) {
+    return getArea() < that.getArea();
+}
