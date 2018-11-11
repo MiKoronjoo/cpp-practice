@@ -1,8 +1,12 @@
-//
-// Created by hassan on 11/11/18.
-//
+#pragma once
+#include <exception>
+#include <string>
 
-#ifndef CPP_PRACTICE_EXCEPTIONS_H
-#define CPP_PRACTICE_EXCEPTIONS_H
-
-#endif //CPP_PRACTICE_EXCEPTIONS_H
+class RGBOutOfRangeException: std::exception {
+private:
+    const std::string message = "Error: the RGB value is out of range. (0 <= R, G, B <= 255)";
+public:
+    const char* what() const throw() {
+        return message.c_str();
+    }
+};
