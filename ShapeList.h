@@ -1,8 +1,25 @@
-//
-// Created by hassan on 11/11/18.
-//
+#pragma once
+#include <vector>
+#include <algorithm>
+#include "Shape.h"
+#include "Rectangle.h"
+#include "Square.h"
+#include "Ellipse.h"
+#include "Circle.h"
+#include "Triangle.h"
 
-#ifndef CPP_PRACTICE_SHAPELIST_H
-#define CPP_PRACTICE_SHAPELIST_H
+bool shapeCompare(Shape* lh_shape, Shape* rh_shape) {
+    return *lh_shape > *rh_shape;
+}
 
-#endif //CPP_PRACTICE_SHAPELIST_H
+class ShapeList {
+private:
+    std::vector<Shape*> list;
+public:
+    void add(Shape& shape) {
+        list.push_back(&shape);
+    }
+    void sort() {
+        std::sort(list.begin(), list.end(), shapeCompare);
+    }
+};
